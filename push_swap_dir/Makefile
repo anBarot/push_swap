@@ -6,35 +6,39 @@
 #    By: abarot <abarot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 17:58:02 by abarot            #+#    #+#              #
-#    Updated: 2021/03/15 10:06:21 by abarot           ###   ########.fr        #
+#    Updated: 2021/03/15 09:35:09 by abarot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PROG_ONE	=	checker
+NAME	=	../checker
 
-PROG_TWO	=	push_swap
+SRCS	=	srcs/main.c \
+			srcs/ft_get_operation.c
 
-PROG_ONE_DIR	=	checker_dir
+OBJS	=	$(SRCS:.c=.o)
 
-PROG_TWO_DIR	=	push_swap_dir
+CC		=	clang
 
-LIB_DIR		=	libft
+INCLUDE	=	include
+
+CFLAGS	+=	-Wall -Wextra -Werror
+
+%.o : %.c
+		clang $(CFLAGS) -c $< -o $@ -I$(INCLUDE)
 
 all		:	
-			make -C $(PROG_ONE_DIR)
+			make -C ../libft
+			make $(NAME)
 
-checker	:	
-			make -C $(PROG_ONE_DIR)
-
-push_swap	:
-			make -C $(PROG_TWO_DIR)
+$(NAME) :	$(OBJS)
+			clang $(CFLAGS) $(OBJS) -o $@ -L../libft -lft -I$(INCLUDE) 
+			chmod 755 $@ 
 
 clean	:	
-			make -C $(LIB_DIR) clean
-			make -C $(PROG_ONE_DIR) clean 
+			make -C ../libft clean && rm $(OBJS)
 
 fclean	:	clean
-			rm $(PROG_ONE)
+			rm $(NAME)
 
-re		:	fclean
+re		:	fclean 
 			make all
