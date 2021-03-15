@@ -6,14 +6,15 @@
 #    By: abarot <abarot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 17:58:02 by abarot            #+#    #+#              #
-#    Updated: 2021/03/15 10:10:44 by abarot           ###   ########.fr        #
+#    Updated: 2021/03/15 12:15:06 by abarot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	../checker
 
 SRCS	=	srcs/main.c \
-			srcs/ft_get_operation.c
+			../srcs/init_and_check.c \
+			../srcs/operations.c 
 
 OBJS	=	$(SRCS:.c=.o)
 

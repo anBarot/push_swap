@@ -6,20 +6,21 @@
 #    By: abarot <abarot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 17:58:02 by abarot            #+#    #+#              #
-#    Updated: 2021/03/15 09:35:09 by abarot           ###   ########.fr        #
+#    Updated: 2021/03/15 12:13:24 by abarot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	../checker
+NAME	=	../push_swap
 
 SRCS	=	srcs/main.c \
-			srcs/ft_get_operation.c
+			../srcs/init_and_check.c \
+			../srcs/operations.c \
 
 OBJS	=	$(SRCS:.c=.o)
 
 CC		=	clang
 
-INCLUDE	=	include
+INCLUDE	=	../include
 
 CFLAGS	+=	-Wall -Wextra -Werror
 
