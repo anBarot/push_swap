@@ -18,7 +18,7 @@ void	ft_st_revrot(t_stack *stack);
 void	ft_st_rot(t_stack *stack);
 void	ft_st_swap(t_stack *stack);
 void	ft_clear_stack(t_stack *st);
-int	ft_isordered(t_stack *astack);
+int	ft_issorted(t_stack *astack);
 t_stack	*ft_check_arg(char **arg);
 void ft_display_stack(t_stack *ast, t_stack *bst);
 t_stack *ft_init_bstack();

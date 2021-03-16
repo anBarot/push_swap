@@ -1,34 +1,66 @@
 #include "push_swap.h"
 
-void	ft_rearrange_stack(t_stack **ast, t_stack **bst)
+int		ft_isreversed(t_stack *ast)
 {
-	int median;
-	int first_value;
-	int second_value;
-	int last_value;
+	int i;
+	int tmp;
 
-	while ((*bst)->array_size || !ft_isordered(*ast))
+	i = 1;
+	tmp = ast->array[0];
+	while (i < ast->array_size)
 	{
-		median = (*ast)->array[(*ast)->array_size / 2];
-		first_value = (*ast)->array[0];
-		second_value = (*ast)->array[1];
-		last_value = (*ast)->array[(*ast)->array_size - 1];
-		if (first_value > last_value)
+		if (tmp < ast->array[i])
+			return (0);
+		tmp = ast->array[i];
+		i++;
+	}
+	return (1);
+}
+
+void	sort_reversed(t_stack **ast, t_stack **bst)
+{
+	while ((*ast)->array_size != 3)
+	{
+		ft_putendl_fd("rra", STDOUT_FILENO);
+		ft_st_revrot(*ast);
+		ft_putendl_fd("pb", STDOUT_FILENO);
+		ft_st_push(bst, ast);
+	}
+	ft_putendl_fd("ra", STDOUT_FILENO);
+	ft_st_rot(*ast);
+	ft_putendl_fd("sa", STDOUT_FILENO);
+	ft_st_swap(*ast);
+	while ((*bst)->array_size)
+	{
+		ft_putendl_fd("pa", STDOUT_FILENO);
+		ft_st_push(ast, bst);
+	}
+}
+
+void	first_sort_algo(t_stack **ast, t_stack **bst)
+{
+	while ((*bst)->array_size || !ft_issorted(*ast))
+	{
+		V_MEDIAN = (*ast)->array[(*ast)->array_size / 2];
+		V_FIRST = (*ast)->array[0];
+		V_SECOND = (*ast)->array[1];
+		V_LAST = (*ast)->array[(*ast)->array_size - 1];
+		if (V_FIRST > V_SECOND && V_FIRST > V_MEDIAN)
 		{
 			ft_putendl_fd("ra", STDOUT_FILENO);
 			ft_st_rot(*ast);
 		}
-		else if (last_value < first_value)
+		else if (V_LAST < V_FIRST && V_LAST < V_SECOND)
 		{
 			ft_putendl_fd("rra", STDOUT_FILENO);
 			ft_st_revrot(*ast);
 		}
-		else if (first_value > second_value || second_value > last_value)
+		else if (V_FIRST > V_SECOND || V_SECOND > V_LAST)
 		{
 			ft_putendl_fd("sa", STDOUT_FILENO);
 			ft_st_swap(*ast);
 		}
-		else if (!ft_isordered(*ast))
+		else if (!ft_issorted(*ast))
 		{
 			ft_putendl_fd("pb", STDOUT_FILENO);
 			ft_st_push(bst, ast);
@@ -39,6 +71,14 @@ void	ft_rearrange_stack(t_stack **ast, t_stack **bst)
 			ft_st_push(ast, bst);
 		}
 	}
+}
+
+void	ft_rearrange_stack(t_stack **ast, t_stack **bst)
+{
+	if (ft_isreversed(*ast))
+		sort_reversed(ast, bst);
+	else
+		first_sort_algo(ast,bst);
 }
 
 int main(int ac, char **av)

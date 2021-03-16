@@ -51,7 +51,7 @@ int main(int ac, char **av)
 		return (EXIT_FAILURE);
 	}
 	ft_read_operation(&ast, &bst);
-	if (!bst->array_size && ft_isordered(ast))
+	if (!bst->array_size && ft_issorted(ast))
 		ft_putendl_fd("OK", STDOUT_FILENO);
 	else
 	{

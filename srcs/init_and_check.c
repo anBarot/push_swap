@@ -21,7 +21,7 @@ void	ft_clear_stack(t_stack *st)
 	free(st);
 }
 
-int	ft_isordered(t_stack *astack)
+int	ft_issorted(t_stack *astack)
 {
 	int tmp;
 	int i;
