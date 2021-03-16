@@ -39,16 +39,17 @@ t_stack	*ft_push(t_stack *st, int nb)
 	return (n_stack);
 }
 
-void	ft_st_push(t_stack **fst_stack, t_stack **sec_stack)
+int	ft_st_push(t_stack **fst_stack, t_stack **sec_stack)
 {
 	if ((*sec_stack)->array_size > 0)
 	{
 		*fst_stack = ft_push(*fst_stack, (*sec_stack)->array[0]);
 		*sec_stack = ft_pop(*sec_stack);
 	}
+	return (PUSH_A);
 }
 
-void	ft_st_revrot(t_stack *stack)
+int	ft_st_revrot(t_stack *stack)
 {
 	int tmp;
 	int i;
@@ -64,9 +65,10 @@ void	ft_st_revrot(t_stack *stack)
 		}
 		stack->array[i] = tmp;
 	}
+	return (RROT_A);
 }
 
-void	ft_st_rot(t_stack *stack)
+int	ft_st_rot(t_stack *stack)
 {
 	int tmp;
 	int i;
@@ -82,10 +84,12 @@ void	ft_st_rot(t_stack *stack)
 		}
 		stack->array[i] = tmp;
 	}
+	return (ROT_A);
 }
 
-void	ft_st_swap(t_stack *stack)
+int		ft_st_swap(t_stack *stack)
 {
 	if (stack->array_size > 1)
 		ft_swap(&stack->array[0], &stack->array[1]);
+	return (SWAP_A);
 }

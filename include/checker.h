@@ -10,13 +10,28 @@ typedef struct	s_stack
 	int			array_size;
 }				t_stack;
 
+enum			e_operation
+{
+	SWAP_A,
+	SWAP_B,
+	SWAP_AB,
+	PUSH_A,
+	PUSH_B,
+	ROT_A,
+	ROT_B,
+	ROT_AB,
+	RROT_A,
+	RROT_B,
+	RROT_AB,
+};
+
 int	ft_get_operation(t_stack **astack, t_stack **bstack, char *line);
 t_stack	*ft_pop(t_stack *st);
 t_stack	*ft_push(t_stack *st, int nb);
-void	ft_st_push(t_stack **fst_stack, t_stack **sec_stack);
-void	ft_st_revrot(t_stack *stack);
-void	ft_st_rot(t_stack *stack);
-void	ft_st_swap(t_stack *stack);
+int		ft_st_push(t_stack **fst_stack, t_stack **sec_stack);
+int		ft_st_revrot(t_stack *stack);
+int		ft_st_rot(t_stack *stack);
+int		ft_st_swap(t_stack *stack);
 void	ft_clear_stack(t_stack *st);
 int	ft_issorted(t_stack *astack);
 t_stack	*ft_check_arg(char **arg);
