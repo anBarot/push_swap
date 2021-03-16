@@ -58,12 +58,12 @@ t_stack	*ft_check_arg(char **arg)
 	return (astack);
 }
 
-t_stack *ft_init_bstack()
+t_stack *ft_init_bstack(size_t size)
 {
 	t_stack *bstack;
 
 	if (!(bstack = ft_calloc(1, sizeof(t_stack))) ||
-		!(bstack->array = ft_calloc(1, sizeof(int))))
+		!(bstack->array = ft_calloc(size, sizeof(int))))
 		return (NULL);
 	bstack->array_size = 0;
 	return (bstack);

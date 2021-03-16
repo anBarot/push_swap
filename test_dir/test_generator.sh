@@ -1,6 +1,6 @@
 #!/bin/bash
 
-entries=($(shuf -i 0-99 -n 5))
+entries=($(shuf -i 0-99 -n 6))
 echo "${entries[@]}" > ./test_dir/input_pushswap.txt
 chmod 777 ./test_dir/input_pushswap.txt
 

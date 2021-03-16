@@ -1,50 +1,14 @@
 #include "checker.h"
 
-t_stack	*ft_pop(t_stack *st)
+int	ft_st_push(t_stack *fst, t_stack *sec)
 {
-	t_stack *n_stack;
-	int i;
-
-	i = 0;
-	n_stack = ft_calloc(1, sizeof(t_stack));
-	n_stack->array_size = st->array_size - 1;
-	n_stack->array = ft_calloc(n_stack->array_size + 1, sizeof(int));
-	while (i < n_stack->array_size)
+	if (sec->array_size)
 	{
-		n_stack->array[i] = st->array[i + 1];
-		i++;
-	}
-	free(st->array);
-	free(st);
-	return (n_stack);
-}
-
-t_stack	*ft_push(t_stack *st, int nb)
-{
-	t_stack *n_stack;
-	int i;
-
-	i = 0;
-	n_stack = ft_calloc(1, sizeof(t_stack));
-	n_stack->array_size = st->array_size + 1;
-	n_stack->array = ft_calloc(n_stack->array_size + 1, sizeof(int));
-	while (i < st->array_size)
-	{
-		n_stack->array[i + 1] = st->array[i];
-		i++;
-	}
-	n_stack->array[0] = nb;
-	free(st->array);
-	free(st);
-	return (n_stack);
-}
-
-int	ft_st_push(t_stack **fst_stack, t_stack **sec_stack)
-{
-	if ((*sec_stack)->array_size > 0)
-	{
-		*fst_stack = ft_push(*fst_stack, (*sec_stack)->array[0]);
-		*sec_stack = ft_pop(*sec_stack);
+		fst->array[fst->array_size] = sec->array[0];
+		fst->array_size = fst->array_size + 1;
+		ft_st_revrot(fst);
+		ft_st_rot(sec);
+		sec->array_size = sec->array_size - 1;
 	}
 	return (PUSH_A);
 }
