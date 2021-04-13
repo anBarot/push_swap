@@ -9,10 +9,15 @@ void ft_display_stack(t_stack *ast, t_stack *bst)
 		printf("%d ", ast->array[i]);
 	}
 	printf("\nbstack :\n");
-	for (int i = 0; i < bst->array_size; i++)
+	if (bst->array_size)
 	{
-		printf("%d ", bst->array[i]);
+		for (int i = 0; i < bst->array_size; i++)
+		{
+			printf("%d ", bst->array[i]);
+		}
 	}
+	else
+		printf("NULL");
 }
 
 void	ft_clear_stack(t_stack *st)

@@ -6,7 +6,7 @@
 #    By: abarot <abarot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 17:58:02 by abarot            #+#    #+#              #
-#    Updated: 2021/03/15 12:15:06 by abarot           ###   ########.fr        #
+#    Updated: 2021/04/13 12:25:16 by abarot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ CC		=	clang
 
 INCLUDE	=	../include
 
-CFLAGS	+=	-Wall -Wextra -Werror
+CFLAGS	+=	-g -Wall -Wextra -Werror
 
 %.o : %.c
 		clang $(CFLAGS) -c $< -o $@ -I$(INCLUDE)
@@ -36,7 +36,7 @@ $(NAME) :	$(OBJS)
 			chmod 755 $@ 
 
 clean	:	
-			make -C ../libft clean && rm $(OBJS)
+			rm $(OBJS)
 
 fclean	:	clean
 			rm $(NAME)

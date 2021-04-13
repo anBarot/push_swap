@@ -6,13 +6,16 @@
 #    By: abarot <abarot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 17:58:02 by abarot            #+#    #+#              #
-#    Updated: 2021/03/15 12:13:24 by abarot           ###   ########.fr        #
+#    Updated: 2021/04/13 12:39:17 by abarot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	../push_swap
 
 SRCS	=	srcs/main.c \
+			srcs/reversed_sort.c \
+			srcs/simplest_sort.c \
+			srcs/min_sort.c \
 			../srcs/init_and_check.c \
 			../srcs/operations.c \
 
@@ -22,7 +25,7 @@ CC		=	clang
 
 INCLUDE	=	../include
 
-CFLAGS	+=	-Wall -Wextra -Werror
+CFLAGS	+=	-g -Wall -Wextra -Werror
 
 %.o : %.c
 		clang $(CFLAGS) -c $< -o $@ -I$(INCLUDE)
@@ -36,7 +39,7 @@ $(NAME) :	$(OBJS)
 			chmod 755 $@ 
 
 clean	:	
-			make -C ../libft clean && rm $(OBJS)
+			rm $(OBJS)
 
 fclean	:	clean
 			rm $(NAME)
