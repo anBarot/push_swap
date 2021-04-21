@@ -1,24 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_and_check.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/21 18:00:35 by abarot            #+#    #+#             */
+/*   Updated: 2021/04/21 18:03:25 by abarot           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "checker.h"
-
-void ft_display_stack(t_stack *ast, t_stack *bst)
-{
-	printf("\nastack :\n");
-	for (int i = 0; i < ast->array_size; i++)
-	{
-		printf("%d ", ast->array[i]);
-	}
-	printf("\nbstack :\n");
-	if (bst->array_size)
-	{
-		for (int i = 0; i < bst->array_size; i++)
-		{
-			printf("%d ", bst->array[i]);
-		}
-	}
-	else
-		printf("NULL");
-}
 
 void	ft_clear_stack(t_stack *st)
 {
@@ -26,7 +18,7 @@ void	ft_clear_stack(t_stack *st)
 	free(st);
 }
 
-int	ft_issorted(t_stack *astack)
+int		ft_issorted(t_stack *astack)
 {
 	int tmp;
 	int i;
@@ -45,8 +37,8 @@ int	ft_issorted(t_stack *astack)
 
 t_stack	*ft_check_arg(char **arg)
 {
-	int i;
-	t_stack *astack;
+	int		i;
+	t_stack	*astack;
 
 	i = 0;
 	if (!(astack = ft_calloc(1, sizeof(t_stack))) ||
@@ -63,7 +55,7 @@ t_stack	*ft_check_arg(char **arg)
 	return (astack);
 }
 
-t_stack *ft_init_bstack(size_t size)
+t_stack	*ft_init_bstack(size_t size)
 {
 	t_stack *bstack;
 

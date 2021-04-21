@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/21 18:03:46 by abarot            #+#    #+#             */
+/*   Updated: 2021/04/21 18:04:15 by abarot           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
-int	ft_st_push(t_stack *fst, t_stack *sec)
+int		ft_st_push(t_stack *fst, t_stack *sec)
 {
 	if (sec->array_size)
 	{
@@ -13,7 +25,7 @@ int	ft_st_push(t_stack *fst, t_stack *sec)
 	return (PUSH_A);
 }
 
-int	ft_st_revrot(t_stack *stack)
+int		ft_st_revrot(t_stack *stack)
 {
 	int tmp;
 	int i;
@@ -32,7 +44,7 @@ int	ft_st_revrot(t_stack *stack)
 	return (RROT_A);
 }
 
-int	ft_st_rot(t_stack *stack)
+int		ft_st_rot(t_stack *stack)
 {
 	int tmp;
 	int i;

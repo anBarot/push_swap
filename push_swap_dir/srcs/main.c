@@ -1,15 +1,27 @@
-#include "push_swap.h"
-#include <signal.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/21 18:04:29 by abarot            #+#    #+#             */
+/*   Updated: 2021/04/21 18:43:01 by abarot           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int	ft_is_smallest(size_t value, t_algos algos)
+#include "push_swap.h"
+
+int		ft_is_smallest(size_t value, t_algos algos)
 {
-	if (value > ft_strlen(S_SONE) || value > ft_strlen(S_STWO) ||
-		value > ft_strlen(S_SELECSORT))
+	if (value > ft_strlen(algos.s_one_solution) ||
+		value > ft_strlen(algos.s_two_solution) ||
+		value > ft_strlen(algos.selec_solution))
 		return (0);
 	return (1);
 }
 
-int get_median(t_stack *sorted)
+int		get_median(t_stack *sorted)
 {
 	int i;
 
@@ -24,23 +36,23 @@ void	ft_check_algo(t_stack *ast, t_stack *bst)
 	t_algos algos;
 	t_stack	*tmp;
 
-	if (!(tmp = ft_calloc(1, sizeof(t_stack))) || 
+	if (!(tmp = ft_calloc(1, sizeof(t_stack))) ||
 		!(tmp->array = ft_calloc(ast->array_size + 1, sizeof(int))))
 		return ;
 	tmp->array_size = ast->array_size;
 	ft_memcpy(tmp->array, ast->array, sizeof(int) * ast->array_size);
-	S_SONE = simplest_sort_algo_1(tmp, bst);
+	algos.s_one_solution = simplest_sort_algo_1(tmp, bst);
 	ft_memcpy(tmp->array, ast->array, sizeof(int) * ast->array_size);
-	S_STWO = simplest_sort_algo_2(tmp, bst);
+	algos.s_two_solution = simplest_sort_algo_2(tmp, bst);
 	ft_memcpy(tmp->array, ast->array, sizeof(int) * ast->array_size);
-	S_SELECSORT = selection_sort(tmp, bst);
+	algos.selec_solution = selection_sort(tmp, bst);
 	ft_clear_stack(tmp);
-	if (ft_is_smallest(ft_strlen(S_SONE), algos))
-		ft_putstr_fd(S_SONE, STDOUT_FILENO);
-	else if (ft_is_smallest(ft_strlen(S_STWO), algos))
-		ft_putstr_fd(S_STWO,STDOUT_FILENO);
+	if (ft_is_smallest(ft_strlen(algos.s_one_solution), algos))
+		ft_putstr_fd(algos.s_one_solution, STDOUT_FILENO);
+	else if (ft_is_smallest(ft_strlen(algos.s_two_solution), algos))
+		ft_putstr_fd(algos.s_two_solution, STDOUT_FILENO);
 	else
-		ft_putstr_fd(S_SELECSORT,STDOUT_FILENO);
+		ft_putstr_fd(algos.selec_solution, STDOUT_FILENO);
 	free(algos.s_one_solution);
 	free(algos.s_two_solution);
 	free(algos.selec_solution);
@@ -48,9 +60,9 @@ void	ft_check_algo(t_stack *ast, t_stack *bst)
 
 void	ft_check_sorting_algo(t_stack *ast, t_stack *bst)
 {
-	char *str_selec;
-	// char *str_chunk;
-	t_stack *tmp;
+	char	*str_selec;
+	char	*str_chunk;
+	t_stack	*tmp;
 
 	if (ast->array_size == 2)
 	{
@@ -67,33 +79,30 @@ void	ft_check_sorting_algo(t_stack *ast, t_stack *bst)
 		ft_check_algo(ast, bst);
 	else
 	{
-		if (!(tmp = ft_calloc(1, sizeof(t_stack))) || 
+		if (!(tmp = ft_calloc(1, sizeof(t_stack))) ||
 			!(tmp->array = ft_calloc(ast->array_size + 1, sizeof(int))))
 			return ;
 		tmp->array_size = ast->array_size;
 		ft_memcpy(tmp->array, ast->array, sizeof(int) * ast->array_size);
 		str_selec = selection_sort(tmp, bst);
-		// ft_display_stack(tmp, bst);
-		// exit(1);
-		// ft_memcpy(tmp->array, ast->array, sizeof(int) * ast->array_size);
-		// str_chunk = selection_sort_chunked(tmp, bst);
-		// // printf("\nselec : %zu, chunked : %zu\n", ft_strlen(str_selec), ft_strlen(str_chunk));
-		// if (ft_strlen(str_selec) < ft_strlen(str_chunk))
+		ft_memcpy(tmp->array, ast->array, sizeof(int) * ast->array_size);
+		str_chunk = selection_sort_chunked(tmp, bst);
+		if (ft_strlen(str_selec) < ft_strlen(str_chunk))
 			write(STDOUT_FILENO, str_selec, ft_strlen(str_selec));
-		// else
-		// 	ft_putstr_fd(str_chunk, STDOUT_FILENO);
+		else
+			write(STDOUT_FILENO, str_chunk, ft_strlen(str_chunk));
 		free(str_selec);
+		free(str_chunk);
 		ft_clear_stack(tmp);
-		// free(str_chunk);
 	}
 }
 
-int main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	t_stack *ast;
 	t_stack *bst;
 
-	if (ac < 2 || !(ast = ft_check_arg(&av[1])) || 
+	if (ac < 2 || !(ast = ft_check_arg(&av[1])) ||
 		!(bst = ft_init_bstack(ast->array_size)))
 	{
 		ft_putendl_fd(ERROR_MESSAGE, STDERR_FILENO);

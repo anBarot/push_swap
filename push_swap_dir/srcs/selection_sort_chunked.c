@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   selection_sort_chunked.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/21 18:24:33 by abarot            #+#    #+#             */
+/*   Updated: 2021/04/21 18:43:28 by abarot           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int		ft_get_max(t_stack ast)
@@ -20,7 +32,7 @@ char	*push_max(t_stack *ast, t_stack *bst, char *res)
 {
 	int max;
 
-	max = ft_get_max(*ast);
+	max = ft_get_max(*bst);
 	if (ft_search_in_stack(*bst, max) < (bst->array_size) / 2)
 		while (bst->array[0] != max)
 		{
@@ -58,10 +70,9 @@ int		ft_get_posi(t_stack ast, int pivot, int direction)
 
 char	*ft_chunked_sort(t_stack *ast, t_stack *bst, int pivot, char *res)
 {
-	printf("\nchunked sort\n");
 	int upper_posi;
 	int down_posi;
-		
+
 	upper_posi = ft_get_posi(*ast, pivot, UP);
 	down_posi = ft_get_posi(*ast, pivot, DOWN);
 	if (upper_posi <= (down_posi - (ast->array_size / 2)))
@@ -81,46 +92,32 @@ char	*ft_chunked_sort(t_stack *ast, t_stack *bst, int pivot, char *res)
 		}
 	}
 	res = ft_do_pushb(res, ast, bst);
-	if (C_SB)
+	if (bst->array[0] < bst->array[1])
 		res = ft_do_action_stb(res, &ft_st_swap, bst);
 	return (res);
 }
 
 char	*selection_sort_chunked(t_stack *ast, t_stack *bst)
 {
-	int n;
-	int *sorted_array;
-	int pivot_value;
-	char *res;
+	int		n;
+	int		*sorted_array;
+	int		pivot_value;
+	char	*res;
 
-	printf("\nselection sort chunked\n");
 	res = ft_calloc(1, 1);
-	sorted_array = ft_memcpy(ft_calloc(ast->array_size + 1, sizeof(int)),
-					ast->array, ast->array_size * sizeof(int));
-	printf("\nsorted array : ");
-	for (int i = 0; i < ast->array_size; i++)
-	{
-		printf("%d, ", sorted_array[i]);
-	}
-	while (1);
-	// ft_sort_array(sorted_array, ast->array_size);
-	// printf("\nsorted array : ");
-	// for (int i = 0; i < ast->array_size; i++)
-	// 	printf("%d, ", sorted_array[i]);
+	sorted_array = ft_calloc(ast->array_size + 1, sizeof(int));
+	ft_memcpy(sorted_array, ast->array, ast->array_size * sizeof(int));
+	ft_sort_array(sorted_array, ast->array_size);
 	n = 1;
-	ft_display_stack(ast, bst);
 	while (ast->array_size > n * 20)
 	{
 		pivot_value = sorted_array[n * 20];
-		printf("\npivot : %d, n * 20 : %d\n", pivot_value, n * 20);
 		while (bst->array_size < n * 20)
 		{
 			res = ft_chunked_sort(ast, bst, pivot_value, res);
 		}
 		n++;
 	}
-	ft_display_stack(ast, bst);
-	while (1);
 	while (ast->array_size)
 		res = push_min(ast, bst, res);
 	while (bst->array_size)

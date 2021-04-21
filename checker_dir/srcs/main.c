@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/21 18:37:22 by abarot            #+#    #+#             */
+/*   Updated: 2021/04/21 18:41:35 by abarot           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "checker.h"
 
-int	ft_get_operation(t_stack *astack, t_stack *bstack, char *line) 
+int		ft_get_operation(t_stack *astack, t_stack *bstack, char *line)
 {
 	if (!(ft_strncmp(line, "sa", 3)) || !(ft_strncmp(line, "ss", 3)))
 		ft_st_swap(astack);
@@ -24,8 +35,8 @@ int	ft_get_operation(t_stack *astack, t_stack *bstack, char *line)
 
 void	ft_read_operation(t_stack *ast, t_stack *bst)
 {
-	char *line;
-	int value;
+	char	*line;
+	int		value;
 
 	while ((value = get_next_line(STDIN_FILENO, &line)))
 	{
@@ -40,7 +51,7 @@ void	ft_read_operation(t_stack *ast, t_stack *bst)
 	free(line);
 }
 
-int main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	t_stack *ast;
 	t_stack *bst;

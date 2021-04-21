@@ -1,4 +1,16 @@
-# include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   selection_sort.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/21 18:09:50 by abarot            #+#    #+#             */
+/*   Updated: 2021/04/21 18:17:27 by abarot           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
 
 int		ft_get_min(t_stack ast)
 {
@@ -16,7 +28,7 @@ int		ft_get_min(t_stack ast)
 	return (min);
 }
 
-int	ft_search_in_stack(t_stack ast, int nb)
+int		ft_search_in_stack(t_stack ast, int nb)
 {
 	int i;
 
@@ -54,7 +66,7 @@ char	*selection_sort(t_stack *ast, t_stack *bst)
 	char *res;
 	char *tmp;
 
-	if (!(res = ft_calloc(1,1)))
+	if (!(res = ft_calloc(1, 1)))
 		return (NULL);
 	while (ast->array_size != 1)
 		res = push_min(ast, bst, res);
