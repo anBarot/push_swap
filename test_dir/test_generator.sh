@@ -2,7 +2,7 @@
 
 for i in {0..99}
 do
-# echo "test number : " $i
+echo "test number : " $i
 entries=($(shuf -i 0-100 -n 500))
 echo "${entries[@]}" > ./test_dir/input_pushswap.txt
 chmod 777 ./test_dir/input_pushswap.txt
