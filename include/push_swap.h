@@ -19,25 +19,34 @@
 # define C_RRA			(V_FIRST_A > V_LAST_A)
 # define C_RRB			(V_FIRST_B < V_LAST_B)
 # define C_DOUBLE		((C_SA && C_SB) || (C_RA && C_RB) || (C_RRA && C_RRB))
-# define V_MEDIAN		algo_value.median
-# define A_SONE			algo_value.s_one
-# define A_STWO			algo_value.s_two
-# define A_QSORT		algo_value.quick_sort
-# define A_MINSORT		algo_value.min_sorting
+# define S_SONE			algos.s_one_solution
+# define S_STWO			algos.s_two_solution
+# define S_SELECSORT	algos.selec_solution
 # define FALSE			0
 # define TRUE			1
+# define UP				0
+# define DOWN			1
 
-typedef struct	s_algo_value
+typedef struct	s_algos
 {
-	int			s_one;
-	int			s_two;
-	int			min_sorting;
-}				t_algo_value;
+	char		*s_one_solution;
+	char		*s_two_solution;
+	char		*selec_solution;
+}				t_algos;
 
-int		min_sort(t_stack *ast, t_stack *bst, int dspl);
 int		ft_isreversed(t_stack *ast);
 void	sort_reversed(t_stack *ast, t_stack *bst);
-int		simplest_sort_algo_1(t_stack *ast, t_stack *bst, int dspl);
-int		simplest_sort_algo_2(t_stack *ast, t_stack *bst, int dspl);
+char	*simplest_sort_algo_1(t_stack *ast, t_stack *bst);
+char	*simplest_sort_algo_2(t_stack *ast, t_stack *bst);
+char	*selection_sort(t_stack *ast, t_stack *bst);
+int		ft_search_in_stack(t_stack ast, int nb);
+int		ft_get_min(t_stack ast);
+int		ft_search_in_stack(t_stack ast, int nb);
+char	*push_min(t_stack *ast, t_stack *bst, char *res);
+char	*ft_do_action_sta(char *res, int (*action)(t_stack *), t_stack *stack);
+char	*ft_do_action_stb(char *res, int (*action)(t_stack *), t_stack *stack);
+char	*ft_do_pusha(char *res, t_stack *ast, t_stack *bst);
+char	*ft_do_pushb(char *res, t_stack *ast, t_stack *bst);
+char	*selection_sort_chunked(t_stack *ast, t_stack *bst);
 
 #endif

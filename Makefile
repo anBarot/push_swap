@@ -6,7 +6,7 @@
 #    By: abarot <abarot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 17:58:02 by abarot            #+#    #+#              #
-#    Updated: 2021/04/13 12:20:45 by abarot           ###   ########.fr        #
+#    Updated: 2021/04/14 14:37:52 by abarot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ test	:
 clean	:	
 			make -C $(LIB_DIR) clean
 			make -C $(PROG_ONE_DIR) clean 
-			make -C $(PROG_TWO_DIR) clean 
+			make -C $(PROG_TWO_DIR) clean
 
 fclean	:	clean
 			rm $(PROG_ONE) $(PROG_TWO)

@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 17:31:34 by abarot            #+#    #+#             */
-/*   Updated: 2021/03/15 18:09:16 by abarot           ###   ########.fr       */
+/*   Updated: 2021/04/20 15:06:06 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,5 @@ int			ft_isft_str(char *str, int (*f)(int));
 int			ft_get_sign(const char *s, int *sign);
 void		ft_swap(int *a, int *b);
 void		ft_clear_map(char **map);
+void		ft_sort_array(int *array, int size);
 #endif

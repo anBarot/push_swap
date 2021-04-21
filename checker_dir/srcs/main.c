@@ -52,9 +52,6 @@ int main(int ac, char **av)
 		return (EXIT_FAILURE);
 	}
 	ft_read_operation(ast, bst);
-	printf("\nis sorted ? : %s\n", (ft_issorted(ast)) ? "YES" : "NO");
-	printf("\nbst array_size ? : %d\n", bst->array_size);
-	ft_display_stack(ast, bst);
 	if (!bst->array_size && ft_issorted(ast))
 		ft_putendl_fd("OK", STDOUT_FILENO);
 	else
