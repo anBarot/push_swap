@@ -6,14 +6,13 @@
 #    By: abarot <abarot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 17:58:02 by abarot            #+#    #+#              #
-#    Updated: 2021/04/21 19:11:16 by abarot           ###   ########.fr        #
+#    Updated: 2021/04/27 18:47:51 by abarot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	../push_swap
 
 SRCS	=	srcs/push_swap.c \
-			srcs/reversed_sort.c \
 			srcs/simplest_sort.c \
 			srcs/selection_sort.c \
 			srcs/selection_sort_chunked.c \

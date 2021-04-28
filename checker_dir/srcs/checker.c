@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:37:22 by abarot            #+#    #+#             */
-/*   Updated: 2021/04/21 18:41:35 by abarot           ###   ########.fr       */
+/*   Updated: 2021/04/28 15:32:19 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		main(int ac, char **av)
 	t_stack *ast;
 	t_stack *bst;
 
-	if (ac < 2 || !(ast = ft_check_arg(&av[1])) ||
+	if (ac < 3 || !(ast = ft_check_arg(&av[1])) ||
 		!(bst = ft_init_bstack(ast->array_size)))
 	{
 		ft_putendl_fd(ERROR_MESSAGE, STDERR_FILENO);

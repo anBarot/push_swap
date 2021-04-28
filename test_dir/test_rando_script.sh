@@ -10,8 +10,10 @@ value=$(<./test_dir/input_pushswap.txt)
 echo '-------------- random values : --------------'
 echo $value
 echo '-------------- result push_swap raw : --------------'
-./push_swap $value
+./push_swap $value > tmp.txt
+cat tmp.txt
 echo '-------------- number of operations : --------------'
-./push_swap $value | wc -l
+cat tmp.txt | wc -l
 echo '-------------- result push_swap | checker : --------------'
-./push_swap $value | ./checker $value
+cat tmp.txt | ./checker $value
+rm tmp.txt

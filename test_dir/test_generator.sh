@@ -2,18 +2,20 @@
 
 for i in {0..100}
 do
-# echo "test number : " $i
-entries=($(shuf -i 0-1000 -n 100))
+echo "test number : " $i
+entries=($(shuf -i 0-100 -n 3))
 echo "${entries[@]}" > ./test_dir/input_pushswap.txt
 chmod 777 ./test_dir/input_pushswap.txt
 
 value=$(<./test_dir/input_pushswap.txt)
-# echo $value
+echo $value
 # ./push_swap $value | wc -l
-# ./push_swap $value | ./checker $value
+./push_swap $value | ./checker $value
 
 # ./push_swap_2 $value | wc -l
-./push_swap_2 $value | ./checker $value
+# ./push_swap_2 $value | ./checker $value
+
+echo '--------------------------------------------------'
 done
  
 # check KO's number :

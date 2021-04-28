@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:50 by abarot            #+#    #+#             */
-/*   Updated: 2021/04/21 18:17:27 by abarot           ###   ########.fr       */
+/*   Updated: 2021/04/27 18:46:26 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,14 @@ char	*push_min(t_stack *ast, t_stack *bst, char *res)
 char	*selection_sort(t_stack *ast, t_stack *bst)
 {
 	char *res;
-	char *tmp;
 
 	if (!(res = ft_calloc(1, 1)))
 		return (NULL);
-	while (ast->array_size != 1)
+	while (ast->array_size != 2 && !ft_issorted(ast))
 		res = push_min(ast, bst, res);
+	if (!ft_issorted(ast))
+		res = ft_do_action_sta(res, &ft_st_swap, ast);
 	while (bst->array_size)
-	{
-		ft_st_push(ast, bst);
-		tmp = res;
-		res = ft_strjoin(res, "pa\n");
-		free(tmp);
-	}
+		res = ft_do_pusha(res, ast, bst);
 	return (res);
 }

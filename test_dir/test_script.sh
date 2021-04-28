@@ -3,8 +3,10 @@
 read input
 
 echo '-------------- result push_swap raw : --------------'
-./push_swap $input 
+./push_swap $input > tmp.txt
+cat tmp.txt
 echo '-------------- number of operations : --------------'
-./push_swap $input | wc -l
+cat tmp.txt | wc -l
 echo '-------------- result push_swap | checker : --------------'
-./push_swap $input | ./checker $input
+cat tmp.txt | ./checker $input
+rm tmp.txt

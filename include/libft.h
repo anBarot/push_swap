@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 17:31:34 by abarot            #+#    #+#             */
-/*   Updated: 2021/04/21 19:33:54 by abarot           ###   ########.fr       */
+/*   Updated: 2021/04/27 16:54:38 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,14 @@ void		*ft_calloc(size_t num, size_t size);
 int			ft_isdigit(int c);
 int			ft_is_space(int c);
 void		*ft_memcpy(void *dest, const void *src, size_t n);
+size_t		ft_strlcpy(char *dst, const char *src, size_t n);
 void		ft_putendl_fd(char *s, int fd);
 void		ft_putstr_fd(char *s, int fd);
 char		**ft_split(char const *s, char c);
 char		*ft_strjoin(char *s1, char *s2);
 size_t		ft_strlen(const char *s);
 char		*ft_strdup(const char *s);
+char		*ft_replace_in_str(char *o_str, char *to_replace, char *elt);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 char		*ft_strchr(const char *s, int c);
 char		*ft_substr(char const *s, unsigned int start, size_t len);

@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:00:35 by abarot            #+#    #+#             */
-/*   Updated: 2021/04/21 18:03:25 by abarot           ###   ########.fr       */
+/*   Updated: 2021/04/28 15:30:31 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ t_stack	*ft_check_arg(char **arg)
 		return (NULL);
 	while (arg[i])
 	{
-		if (!ft_isft_str(arg[i], ft_isdigit) ||
+		if ((!ft_isft_str(arg[i], ft_isdigit) && arg[i][0] != '-') ||
+			(!ft_isft_str(arg[i] + 1, ft_isdigit) && arg[i][0] == '-') ||
 			(astack->array[i] = ft_atoi(arg[i])) != ft_atol(arg[i]))
 			return (NULL);
 		i++;
