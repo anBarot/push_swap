@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:24:33 by abarot            #+#    #+#             */
-/*   Updated: 2021/04/27 17:54:04 by abarot           ###   ########.fr       */
+/*   Updated: 2021/04/28 15:50:08 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,11 @@ char	*selection_sort_chunked(t_stack *ast, t_stack *bst)
 	ft_memcpy(sorted_array, ast->array, ast->array_size * sizeof(int));
 	ft_sort_array(sorted_array, ast->array_size);
 	n = 1;
-	while (ast->array_size > n * 20 && !ft_issorted(ast))
+	while (ast->array_size > n * (ast->array_size / 10) && !ft_issorted(ast))
 	{
-		pivot_value = sorted_array[n * 20];
-		while (bst->array_size < n * 20 && !ft_issorted(ast))
+		pivot_value = sorted_array[n * (ast->array_size / 10)];
+		while (bst->array_size < n * (ast->array_size / 10)
+				&& !ft_issorted(ast))
 		{
 			res = ft_chunked_sort(ast, bst, pivot_value, res);
 		}

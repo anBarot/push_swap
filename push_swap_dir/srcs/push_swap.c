@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:04:29 by abarot            #+#    #+#             */
-/*   Updated: 2021/04/28 15:38:54 by abarot           ###   ########.fr       */
+/*   Updated: 2021/04/28 16:16:26 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	ft_check_sorting_algo(t_stack *ast, t_stack *bst)
 	}
 	else if (ast->array_size <= 10)
 		ft_check_algo(ast, bst);
-	else if (ast->array_size < 500)
+	else if (ast->array_size < 200)
 	{
 		if (!(tmp = ft_calloc(1, sizeof(t_stack))) ||
 			!(tmp->array = ft_calloc(ast->array_size + 1, sizeof(int))))

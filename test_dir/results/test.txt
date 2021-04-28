@@ -1,10 +1,9 @@
 -------------- result push_swap raw : --------------
+pb
 sa
-ra
+pa
 sa
 -------------- number of operations : --------------
-3
+4
 -------------- result push_swap | checker : --------------
 OK
-
-ast : -1, 6
