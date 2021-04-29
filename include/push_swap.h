@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:28:32 by abarot            #+#    #+#             */
-/*   Updated: 2021/04/28 15:47:46 by abarot           ###   ########.fr       */
+/*   Updated: 2021/04/29 12:48:48 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ char					*ft_do_action_sta(char *res, int (*action)(t_stack *),
 											t_stack *stack);
 char					*ft_do_action_stb(char *res, int (*action)(t_stack *),
 											t_stack *stack);
+char					*ft_do_action_both(char *res, int (*action)(t_stack *),
+											t_stack *ast, t_stack *bst);
 char					*ft_do_pusha(char *res, t_stack *ast, t_stack *bst);
 char					*ft_do_pushb(char *res, t_stack *ast, t_stack *bst);
 char					*selection_sort_chunked(t_stack *ast, t_stack *bst);
