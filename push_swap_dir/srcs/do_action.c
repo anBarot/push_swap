@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 17:58:04 by abarot            #+#    #+#             */
-/*   Updated: 2021/04/29 13:03:38 by abarot           ###   ########.fr       */
+/*   Updated: 2021/04/29 14:56:14 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_do_action_stb(char *res, int (*action)(t_stack *), t_stack *stack)
 }
 
 char	*ft_do_action_both(char *res, int (*action)(t_stack *), t_stack *ast,
-							t_stack * bst)
+							t_stack *bst)
 {
 	char	*tmp;
 	int		dspl;

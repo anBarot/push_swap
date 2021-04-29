@@ -6,46 +6,11 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:24:33 by abarot            #+#    #+#             */
-/*   Updated: 2021/04/29 14:17:42 by abarot           ###   ########.fr       */
+/*   Updated: 2021/04/29 16:59:16 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int		ft_get_max(t_stack ast)
-{
-	int max;
-	int i;
-
-	i = 1;
-	max = ast.array[0];
-	while (i < ast.array_size)
-	{
-		if (max < ast.array[i])
-			max = ast.array[i];
-		i++;
-	}
-	return (max);
-}
-
-char	*push_max(t_stack *ast, t_stack *bst, char *res)
-{
-	int max;
-
-	max = ft_get_max(*bst);
-	if (ft_search_in_stack(*bst, max) < (bst->array_size) / 2)
-		while (bst->array[0] != max)
-		{
-			res = ft_do_action_stb(res, &ft_st_rot, bst);
-		}
-	else
-		while (bst->array[0] != max)
-		{
-			res = ft_do_action_stb(res, &ft_st_revrot, bst);
-		}
-	res = ft_do_pusha(res, ast, bst);
-	return (res);
-}
 
 int		ft_get_posi(t_stack ast, int pivot, int direction)
 {
@@ -134,9 +99,7 @@ char	*selection_sort_chunked(t_stack *ast, t_stack *bst)
 	{
 		pivot_value = sorted_array[n * chunk_len];
 		while (bst->array_size < (n * chunk_len) && !ft_issorted(ast))
-		{
 			res = ft_chunked_sort(ast, bst, pivot_value, res);
-		}
 		n++;
 	}
 	while (ast->array_size && !ft_issorted(ast))

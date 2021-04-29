@@ -6,7 +6,7 @@
 #    By: abarot <abarot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 17:58:02 by abarot            #+#    #+#              #
-#    Updated: 2021/04/27 20:16:52 by abarot           ###   ########.fr        #
+#    Updated: 2021/04/29 17:16:13 by abarot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,16 @@ PROG_ONE	=	checker
 
 PROG_TWO	=	push_swap
 
+LIBFT		=	libft.a
+
 PROG_ONE_DIR	=	checker_dir
 
 PROG_TWO_DIR	=	push_swap_dir
+
+SRCS			=	shared_srcs/init_and_check.c \
+					shared_srcs/operations.c
+
+OBJS			=	$(SRCS:.c=.o)
 
 LIB_DIR		=	libft
 
@@ -58,9 +65,10 @@ clean	:
 			make -C $(LIB_DIR) clean
 			make -C $(PROG_ONE_DIR) clean 
 			make -C $(PROG_TWO_DIR) clean
+			rm $(OBJS)
 
 fclean	:	clean
-			rm $(PROG_ONE) $(PROG_TWO)
+			rm $(PROG_ONE) $(PROG_TWO) $(LIB_DIR)/$(LIBFT)
 
 re		:	fclean
 			make all
