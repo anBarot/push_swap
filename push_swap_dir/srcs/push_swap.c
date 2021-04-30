@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:04:29 by abarot            #+#    #+#             */
-/*   Updated: 2021/04/29 16:17:32 by abarot           ###   ########.fr       */
+/*   Updated: 2021/04/30 17:07:34 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		main(int ac, char **av)
 	t_stack *ast;
 	t_stack *bst;
 
-	if (ac < 3 || !(ast = ft_check_arg(&av[1])) ||
+	if (ac < 2 || !(ast = ft_check_arg(&av[1])) ||
 		!(bst = ft_init_bstack(ast->array_size)))
 	{
 		ft_putendl_fd(ERROR_MESSAGE, STDERR_FILENO);
