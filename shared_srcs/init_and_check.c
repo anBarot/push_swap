@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:00:35 by abarot            #+#    #+#             */
-/*   Updated: 2021/04/30 17:46:07 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/01 13:09:35 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,13 @@ t_stack	*ft_check_arg(char **arg)
 
 	i_arg = 0;
 	i_array = 0;
+	if (!ft_strncmp(arg[0], "-v", 3))
+	{
+		debug = TRUE;
+		arg = &arg[1];
+	}
+	else 
+		debug = FALSE;
 	if (!(astack = ft_calloc(1, sizeof(t_stack))) ||
 		!(astack->array = ft_calloc(ft_count_line(arg), sizeof(int))))
 		return (NULL);

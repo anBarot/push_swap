@@ -6,7 +6,7 @@
 #    By: abarot <abarot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 17:58:02 by abarot            #+#    #+#              #
-#    Updated: 2021/04/29 17:16:13 by abarot           ###   ########.fr        #
+#    Updated: 2021/05/01 13:42:58 by abarot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ PROG_ONE_DIR	=	checker_dir
 PROG_TWO_DIR	=	push_swap_dir
 
 SRCS			=	shared_srcs/init_and_check.c \
-					shared_srcs/operations.c
+					shared_srcs/operations.c \
+					shared_srcs/ft_display_stack.c
 
 OBJS			=	$(SRCS:.c=.o)
 

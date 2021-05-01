@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:26:21 by abarot            #+#    #+#             */
-/*   Updated: 2021/04/28 15:18:48 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/01 13:41:15 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "libft.h"
 # define ERROR_MESSAGE	"Error"
+# define FALSE			0
+# define TRUE			1
 
 typedef struct			s_stack
 {
@@ -37,6 +39,8 @@ enum					e_operation
 	RROT_AB,
 };
 
+int debug;
+
 int						ft_get_operation(t_stack *astack, t_stack *bstack,
 											char *line);
 int						ft_st_push(t_stack *fst, t_stack *sec);
@@ -47,5 +51,6 @@ void					ft_clear_stack(t_stack *st);
 int						ft_issorted(t_stack *astack);
 t_stack					*ft_check_arg(char **arg);
 t_stack					*ft_init_bstack(size_t size);
+void					ft_display_stack(t_stack ast, t_stack bst);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: abarot <abarot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 17:58:02 by abarot            #+#    #+#              #
-#    Updated: 2021/04/29 15:01:03 by abarot           ###   ########.fr        #
+#    Updated: 2021/05/01 13:44:02 by abarot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME	=	../checker
 
 SRCS	=	srcs/checker.c \
 			../shared_srcs/init_and_check.c \
-			../shared_srcs/operations.c 
+			../shared_srcs/operations.c \
+			../shared_srcs/ft_display_stack.c
 
 OBJS	=	$(SRCS:.c=.o)
 

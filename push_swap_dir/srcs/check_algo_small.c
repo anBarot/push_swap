@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 16:14:24 by abarot            #+#    #+#             */
-/*   Updated: 2021/04/29 16:16:18 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/01 13:32:43 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@ char	*ft_lighten_str(char *res)
 	free(tmp);
 	tmp = res;
 	res = ft_replace_in_str(res, "pb\nra\npa\n", "sa\nra\n");
-	free(tmp);
-	tmp = res;
-	res = ft_replace_in_str(res, "sa\npb\npb\nsa\n", "pb\npb\nss\n");
 	free(tmp);
 	return (res);
 }

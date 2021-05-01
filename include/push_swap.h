@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:28:32 by abarot            #+#    #+#             */
-/*   Updated: 2021/04/29 16:16:13 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/01 13:41:05 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include "libft.h"
 # include "checker.h"
 
-# define FALSE			0
-# define TRUE			1
 # define UP				0
 # define DOWN			1
 
@@ -41,9 +39,9 @@ char					*push_min(t_stack *ast, t_stack *bst, char *res);
 char					*push_max(t_stack *ast, t_stack *bst, char *res);
 char					*push_min(t_stack *ast, t_stack *bst, char *res);
 char					*ft_do_action_sta(char *res, int (*action)(t_stack *),
-											t_stack *stack);
+											t_stack *ast, t_stack *bst);
 char					*ft_do_action_stb(char *res, int (*action)(t_stack *),
-											t_stack *stack);
+											t_stack *ast, t_stack *bst);
 char					*ft_do_action_both(char *res, int (*action)(t_stack *),
 											t_stack *ast, t_stack *bst);
 char					*ft_do_pusha(char *res, t_stack *ast, t_stack *bst);

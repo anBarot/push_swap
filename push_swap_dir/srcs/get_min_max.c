@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 14:51:27 by abarot            #+#    #+#             */
-/*   Updated: 2021/04/29 14:54:20 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/01 12:37:03 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ char	*push_min(t_stack *ast, t_stack *bst, char *res)
 	if (ft_search_in_stack(*ast, min) < (ast->array_size) / 2)
 		while (ast->array[0] != min)
 		{
-			res = ft_do_action_sta(res, &ft_st_rot, ast);
+			res = ft_do_action_sta(res, &ft_st_rot, ast, bst);
 		}
 	else
 		while (ast->array[0] != min)
 		{
-			res = ft_do_action_sta(res, &ft_st_revrot, ast);
+			res = ft_do_action_sta(res, &ft_st_revrot, ast, bst);
 		}
 	res = ft_do_pushb(res, ast, bst);
 	return (res);
@@ -71,12 +71,12 @@ char	*push_max(t_stack *ast, t_stack *bst, char *res)
 	if (ft_search_in_stack(*bst, max) < (bst->array_size) / 2)
 		while (bst->array[0] != max)
 		{
-			res = ft_do_action_stb(res, &ft_st_rot, bst);
+			res = ft_do_action_stb(res, &ft_st_rot, ast, bst);
 		}
 	else
 		while (bst->array[0] != max)
 		{
-			res = ft_do_action_stb(res, &ft_st_revrot, bst);
+			res = ft_do_action_stb(res, &ft_st_revrot, ast, bst);
 		}
 	res = ft_do_pusha(res, ast, bst);
 	return (res);

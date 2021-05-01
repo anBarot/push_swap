@@ -6,7 +6,7 @@
 #    By: abarot <abarot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 17:58:02 by abarot            #+#    #+#              #
-#    Updated: 2021/04/29 16:19:09 by abarot           ###   ########.fr        #
+#    Updated: 2021/05/01 13:43:19 by abarot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS	=	srcs/push_swap.c \
 			srcs/do_action.c \
 			../shared_srcs/init_and_check.c \
 			../shared_srcs/operations.c \
+			../shared_srcs/ft_display_stack.c
 
 OBJS	=	$(SRCS:.c=.o)
 

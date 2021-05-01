@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 17:31:34 by abarot            #+#    #+#             */
-/*   Updated: 2021/04/27 16:54:38 by abarot           ###   ########.fr       */
+/*   Updated: 2021/04/30 18:36:37 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 int			ft_atoi(const char *s);
 long		ft_atol(const char *s);
+char		*ft_itoa(int n);
 void		ft_bzero(void *s, size_t n);
 void		*ft_calloc(size_t num, size_t size);
 int			ft_isdigit(int c);
