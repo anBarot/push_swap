@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:26:21 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/01 13:41:15 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/01 15:11:53 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ enum					e_operation
 
 int debug;
 
-int						ft_get_operation(t_stack *astack, t_stack *bstack,
-											char *line);
 int						ft_st_push(t_stack *fst, t_stack *sec);
 int						ft_st_revrot(t_stack *stack);
 int						ft_st_rot(t_stack *stack);

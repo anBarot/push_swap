@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:37:22 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/01 13:41:48 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/01 14:26:31 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ void	ft_read_operation(t_stack *ast, t_stack *bst)
 {
 	char	*line;
 	int		value;
+	int		count;
+	char	*str_count;
 
+	count = 0;
 	if (debug == TRUE)
 		ft_display_stack(*ast, *bst);
 	while ((value = get_next_line(STDIN_FILENO, &line)))
@@ -51,8 +54,15 @@ void	ft_read_operation(t_stack *ast, t_stack *bst)
 			exit(EXIT_FAILURE);
 		}
 		free(line);
+		count++;
 		if (debug == TRUE)
+		{
+			str_count = ft_itoa(count);
+			ft_putstr_fd(str_count, STDOUT_FILENO);
+			ft_putstr_fd(" :\n", STDOUT_FILENO);
 			ft_display_stack(*ast, *bst);
+			free(str_count);
+		}
 	}
 	free(line);
 }

@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:24:33 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/01 13:36:10 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/01 15:19:57 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ char	*ft_chunked_sort(t_stack *ast, t_stack *bst, int pivot, char *res)
 
 	upper_posi = ft_get_posi(*ast, pivot, UP);
 	down_posi = ft_get_posi(*ast, pivot, DOWN);
-	if (upper_posi <= (down_posi - (ast->array_size / 2)))
+	if (upper_posi < (ast->array_size - down_posi) || 
+		((upper_posi == (ast->array_size - down_posi)) &&
+		(ast->array[upper_posi] <= ast->array[down_posi])))
 	{
 		while (upper_posi)
 		{
@@ -50,7 +52,7 @@ char	*ft_chunked_sort(t_stack *ast, t_stack *bst, int pivot, char *res)
 	}
 	else
 	{
-		while ((down_posi - ast->array_size) < 0)
+		while (ast->array_size != down_posi)
 		{
 			res = ft_do_action_sta(res, &ft_st_revrot, ast, bst);
 			down_posi++;

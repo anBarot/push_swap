@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 16:14:24 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/01 13:32:43 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/01 15:21:09 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		ft_is_smallest(size_t value, t_algos algos)
 {
 	if (value > ft_strlen(algos.s_one_solution) ||
 		value > ft_strlen(algos.s_two_solution) ||
+		value > ft_strlen(algos.s_three_solution) ||
 		value > ft_strlen(algos.selec_solution))
 		return (0);
 	return (1);
@@ -47,8 +48,10 @@ void	ft_print_smallest(t_algos algos)
 {
 	if (ft_is_smallest(ft_strlen(algos.s_one_solution), algos))
 		ft_putstr_fd(algos.s_one_solution, STDOUT_FILENO);
-	else if (ft_is_smallest(ft_strlen(algos.s_two_solution), algos))
+	else if(ft_is_smallest(ft_strlen(algos.s_two_solution), algos))
 		ft_putstr_fd(algos.s_two_solution, STDOUT_FILENO);
+	else if (ft_is_smallest(ft_strlen(algos.s_three_solution), algos))
+		ft_putstr_fd(algos.s_three_solution, STDOUT_FILENO);
 	else
 		ft_putstr_fd(algos.selec_solution, STDOUT_FILENO);
 }
@@ -67,13 +70,17 @@ void	check_algo_small(t_stack *ast, t_stack *bst)
 	ft_memcpy(tmp->array, ast->array, sizeof(int) * ast->array_size);
 	algos.s_two_solution = simplest_sort_algo_2(tmp, bst);
 	ft_memcpy(tmp->array, ast->array, sizeof(int) * ast->array_size);
+	algos.s_three_solution = simplest_sort_algo_3(tmp, bst);
+	ft_memcpy(tmp->array, ast->array, sizeof(int) * ast->array_size);
 	algos.selec_solution = selection_sort(tmp, bst);
 	ft_clear_stack(tmp);
 	algos.s_one_solution = ft_lighten_str(algos.s_one_solution);
 	algos.s_two_solution = ft_lighten_str(algos.s_two_solution);
+	algos.s_three_solution = ft_lighten_str(algos.s_three_solution);
 	algos.selec_solution = ft_lighten_str(algos.selec_solution);
 	ft_print_smallest(algos);
 	free(algos.s_one_solution);
 	free(algos.s_two_solution);
+	free(algos.s_three_solution);
 	free(algos.selec_solution);
 }
