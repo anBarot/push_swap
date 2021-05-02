@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:09:50 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/01 13:07:38 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/02 15:30:50 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		ft_search_in_stack(t_stack ast, int nb)
 
 char	*selection_sort(t_stack *ast, t_stack *bst)
 {
-	char *res;
+	char	*res;
 
 	if (debug == TRUE)
 	{
@@ -38,9 +38,9 @@ char	*selection_sort(t_stack *ast, t_stack *bst)
 	}
 	if (!(res = ft_calloc(1, 1)))
 		return (NULL);
-	while (ast->array_size != 2 && !ft_issorted(ast))
+	while (ast->array_size != 2 && !ft_issorted(ast->array, ast->array_size))
 		res = push_min(ast, bst, res);
-	if (!ft_issorted(ast))
+	if (!ft_issorted(ast->array, ast->array_size))
 		res = ft_do_action_sta(res, &ft_st_swap, ast, bst);
 	while (bst->array_size)
 		res = ft_do_pusha(res, ast, bst);

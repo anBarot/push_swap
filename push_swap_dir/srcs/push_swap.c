@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:04:29 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/01 14:58:40 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/02 13:24:56 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		main(int ac, char **av)
 		ft_putendl_fd(ERROR_MESSAGE, STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
-	if (!ft_issorted(ast))
+	if (!ft_issorted(ast->array, ast->array_size))
 	{
 		ft_check_sorting_algo(ast, bst);
 	}

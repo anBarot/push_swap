@@ -6,7 +6,7 @@
 #    By: abarot <abarot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 17:58:02 by abarot            #+#    #+#              #
-#    Updated: 2021/05/01 13:43:19 by abarot           ###   ########.fr        #
+#    Updated: 2021/05/02 14:59:45 by abarot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,15 @@ SRCS	=	srcs/push_swap.c \
 			srcs/selection_sort.c \
 			srcs/selection_sort_chunked.c \
 			srcs/do_action.c \
-			../shared_srcs/init_and_check.c \
-			../shared_srcs/operations.c \
-			../shared_srcs/ft_display_stack.c
+			srcs/get_sorted_chunks.c
+
+SHARED_SRCS	=	../shared_srcs/init_and_check.c \
+				../shared_srcs/operations.c \
+				../shared_srcs/ft_display_stack.c
 
 OBJS	=	$(SRCS:.c=.o)
+
+SHARED_OBJS	=	$(SHARED_SRCS:.c=.o)
 
 CC		=	clang
 
@@ -38,18 +42,12 @@ all		:
 			make -C ../libft
 			make $(NAME)
 
-$(NAME) :	$(OBJS)
-			clang $(CFLAGS) $(OBJS) -o $@ -L../libft -lft -I$(INCLUDE) 
+$(NAME) :	$(OBJS) $(SHARED_OBJS)
+			clang $(CFLAGS) $(OBJS) $(SHARED_OBJS) -o $@ -L../libft -lft -I$(INCLUDE) 
 			chmod 755 $@ 
 
 clean	:	
-			rm	srcs/push_swap.o \
-				srcs/get_min_max.o \
-				srcs/check_algo_small.o \
-				srcs/simplest_sort.o \
-				srcs/selection_sort.o \
-				srcs/selection_sort_chunked.o \
-				srcs/do_action.o
+			rm	$(OBJS)
 
 fclean	:	clean
 			rm $(NAME)

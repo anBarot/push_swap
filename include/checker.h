@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:26:21 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/01 15:11:53 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/02 13:24:25 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int						ft_st_revrot(t_stack *stack);
 int						ft_st_rot(t_stack *stack);
 int						ft_st_swap(t_stack *stack);
 void					ft_clear_stack(t_stack *st);
-int						ft_issorted(t_stack *astack);
+int						ft_issorted(int *array, int size);
 t_stack					*ft_check_arg(char **arg);
 t_stack					*ft_init_bstack(size_t size);
 void					ft_display_stack(t_stack ast, t_stack bst);

@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:37:22 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/01 14:26:31 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/02 14:57:03 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int		main(int ac, char **av)
 		return (EXIT_FAILURE);
 	}
 	ft_read_operation(ast, bst);
-	if (!bst->array_size && ft_issorted(ast))
+	if (!bst->array_size && ft_issorted(ast->array, ast->array_size))
 		ft_putendl_fd("OK", STDOUT_FILENO);
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:24:33 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/01 15:19:57 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/02 15:35:56 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,11 @@ char	*selection_sort_chunked(t_stack *ast, t_stack *bst)
 	char	*res;
 	int		chunk_len;
 
+	int *patern = get_sorted_chunks(*ast);
+	printf("\nPatern :\n");
+	for (int i = 0; patern[i] != -1; i++)
+		printf("%d, ", patern[i]);
+	printf("\nEnd of Patern\n");
 	if (debug == TRUE)
 	{
 		write(STDOUT_FILENO, "Selection sort chunked :\n\n",
@@ -82,14 +87,16 @@ char	*selection_sort_chunked(t_stack *ast, t_stack *bst)
 	ft_sort_array(sorted_array, ast->array_size);
 	n = 1;
 	chunk_len = ast->array_size / 11;
-	while (ast->array_size > (n * chunk_len) && !ft_issorted(ast))
+	while (ast->array_size > (n * chunk_len) &&
+			!ft_issorted(ast->array, ast->array_size))
 	{
 		pivot_value = sorted_array[n * chunk_len];
-		while (bst->array_size < (n * chunk_len) && !ft_issorted(ast))
+		while (bst->array_size < (n * chunk_len) && 
+				!ft_issorted(ast->array, ast->array_size))
 			res = ft_chunked_sort(ast, bst, pivot_value, res);
 		n++;
 	}
-	while (ast->array_size && !ft_issorted(ast))
+	while (ast->array_size && !ft_issorted(ast->array, ast->array_size))
 		res = push_min(ast, bst, res);
 	while (bst->array_size)
 		res = push_max(ast, bst, res);

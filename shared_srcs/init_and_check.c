@@ -6,24 +6,24 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:00:35 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/01 13:09:35 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/02 13:26:14 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-int		ft_issorted(t_stack *astack)
+int		ft_issorted(int *array, int size)
 {
 	int tmp;
 	int i;
 
 	i = 1;
-	tmp = astack->array[0];
-	while (i < astack->array_size)
+	tmp = array[0];
+	while (i < size)
 	{
-		if (tmp > astack->array[i])
+		if (tmp > array[i])
 			return (0);
-		tmp = astack->array[i];
+		tmp = array[i];
 		i++;
 	}
 	return (1);
