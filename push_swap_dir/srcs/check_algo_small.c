@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/29 16:14:24 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/03 12:37:24 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/03 15:24:00 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,24 +43,25 @@ int		ft_is_smallest(size_t value, t_algos algos)
 	return (1);
 }
 
-void	ft_print_smallest(t_algos algos)
+char	*get_smallest(t_algos algos)
 {
 	if (ft_is_smallest(ft_strlen(algos.s_one_solution), algos))
-		ft_putstr_fd(algos.s_one_solution, STDOUT_FILENO);
+		return (algos.s_one_solution);
 	else if (ft_is_smallest(ft_strlen(algos.s_two_solution), algos))
-		ft_putstr_fd(algos.s_two_solution, STDOUT_FILENO);
+		return (algos.s_two_solution);
 	else
-		ft_putstr_fd(algos.selec_solution, STDOUT_FILENO);
+		return (algos.selec_solution);
 }
 
-void	check_algo_small(t_stack *ast, t_stack *bst)
+char	*check_algo_small(t_stack *ast, t_stack *bst)
 {
 	t_algos algos;
 	t_stack	*tmp;
+	char	*res;
 
 	if (!(tmp = ft_calloc(1, sizeof(t_stack))) ||
 		!(tmp->array = ft_calloc(ast->array_size + 1, sizeof(int))))
-		return ;
+		return (NULL);
 	tmp->array_size = ast->array_size;
 	ft_memcpy(tmp->array, ast->array, sizeof(int) * ast->array_size);
 	algos.s_one_solution = simplest_sort_algo_1(tmp, bst);
@@ -72,8 +73,9 @@ void	check_algo_small(t_stack *ast, t_stack *bst)
 	algos.s_one_solution = ft_lighten_str(algos.s_one_solution);
 	algos.s_two_solution = ft_lighten_str(algos.s_two_solution);
 	algos.selec_solution = ft_lighten_str(algos.selec_solution);
-	ft_print_smallest(algos);
+	res = ft_strdup(get_smallest(algos));
 	free(algos.s_one_solution);
 	free(algos.s_two_solution);
 	free(algos.selec_solution);
+	return (res);
 }

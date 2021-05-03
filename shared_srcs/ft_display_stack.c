@@ -6,11 +6,18 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/01 13:42:13 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/03 13:56:34 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/03 15:52:33 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+void	display_error(void)
+{
+	(g_color == TRUE) ? ft_putstr_fd(BOLDRED, STDOUT_FILENO) : 0;
+	ft_putendl_fd(ERROR_MESSAGE, STDERR_FILENO);
+	(g_color == TRUE) ? ft_putstr_fd(RESET, STDOUT_FILENO) : 0;
+}
 
 int		is_sorted(int *array, int size, int reverse)
 {
@@ -42,7 +49,9 @@ void	display_header(t_stack ast, t_stack bst, char *str)
 {
 	if (g_debug == TRUE)
 	{
+		(g_color == TRUE) ? ft_putstr_fd(BOLDYELLOW, STDOUT_FILENO) : 0;
 		write(STDOUT_FILENO, str, ft_strlen(str));
+		(g_color == TRUE) ? ft_putstr_fd(RESET, STDOUT_FILENO) : 0;
 		ft_display_stack(ast, bst);
 	}
 }
@@ -55,7 +64,9 @@ void	ft_display_one_nb(int nb)
 	tmp = ft_itoa(nb);
 	space_nb = 14 - ft_strlen(tmp);
 	write(STDOUT_FILENO, "              ", space_nb);
+	(g_color == TRUE) ? ft_putstr_fd(BOLDBLUE, STDOUT_FILENO) : 0;
 	ft_putstr_fd(tmp, STDOUT_FILENO);
+	(g_color == TRUE) ? ft_putstr_fd(RESET, STDOUT_FILENO) : 0;
 	free(tmp);
 }
 
@@ -64,8 +75,9 @@ void	ft_display_stack(t_stack ast, t_stack bst)
 	int		i;
 
 	i = 0;
-	write(STDOUT_FILENO, " -----ast----- -----bst-----\n",
-	ft_strlen(" -----ast----- -----bst-----\n"));
+	(g_color == TRUE) ? ft_putstr_fd(BOLDYELLOW, STDOUT_FILENO) : 0;
+	ft_putstr_fd(" -----ast----- -----bst-----\n", STDOUT_FILENO);
+	(g_color == TRUE) ? ft_putstr_fd(RESET, STDOUT_FILENO) : 0;
 	while (i < ast.array_size || i < bst.array_size)
 	{
 		if (i < ast.array_size)

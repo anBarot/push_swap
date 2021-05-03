@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:28:32 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/03 12:36:12 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/03 15:07:30 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,13 @@ typedef struct			s_algos
 	char				*selec_solution;
 }						t_algos;
 
-void					check_algo_small(t_stack *ast, t_stack *bst);
+char					*check_algo_small(t_stack *ast, t_stack *bst);
 int						is_special_case(t_stack *ast);
 char					*do_special_case(t_stack *ast, t_stack *bst,
 						int special);
 char					*sort_reversed(char *res, t_stack *ast, t_stack *bst);
 char					*simplest_sort_algo_1(t_stack *ast, t_stack *bst);
 char					*simplest_sort_algo_2(t_stack *ast, t_stack *bst);
-char					*simplest_sort_algo_3(t_stack *ast, t_stack *bst);
 char					*selection_sort(t_stack *ast, t_stack *bst);
 char					*selection_sort_chunked(t_stack *ast, t_stack *bst,
 						int chunk_len);
@@ -54,7 +53,6 @@ int						ft_get_min(t_stack ast);
 int						ft_get_max(t_stack ast);
 char					*push_min(t_stack *ast, t_stack *bst, char *res);
 char					*push_max(t_stack *ast, t_stack *bst, char *res);
-char					*push_min(t_stack *ast, t_stack *bst, char *res);
 char					*ft_do_action_sta(char *res, int (*action)(t_stack *),
 											t_stack *ast, t_stack *bst);
 char					*ft_do_action_stb(char *res, int (*action)(t_stack *),

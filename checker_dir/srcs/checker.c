@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:37:22 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/03 13:58:35 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/03 16:08:53 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	ft_display_checker(int count, t_stack ast, t_stack bst)
 {
 	char	*str_count;
 
+	ft_putstr_fd(BOLDYELLOW, STDOUT_FILENO);
 	str_count = ft_itoa(count);
 	ft_putstr_fd(str_count, STDOUT_FILENO);
 	ft_putstr_fd(" :\n", STDOUT_FILENO);
@@ -54,17 +55,18 @@ void	ft_read_operation(t_stack *ast, t_stack *bst)
 
 	count = 0;
 	display_header(*ast, *bst, "Checker :\n\n");
+	(g_color == TRUE) ? ft_putstr_fd(BOLDCYAN, STDOUT_FILENO) : 0;
 	while ((value = get_next_line(STDIN_FILENO, &line)))
 	{
 		if (value == -1 || ft_get_operation(ast, bst, line) == EXIT_FAILURE)
+			display_error();
+		else
 		{
-			ft_putendl_fd(ERROR_MESSAGE, STDERR_FILENO);
-			exit(EXIT_FAILURE);
+			count++;
+			(g_debug == TRUE) ? ft_display_checker(count, *ast, *bst) : 0;
 		}
 		free(line);
-		count++;
-		if (g_debug == TRUE)
-			ft_display_checker(count, *ast, *bst);
+		(g_color == TRUE) ? ft_putstr_fd(BOLDCYAN, STDOUT_FILENO) : 0;
 	}
 	free(line);
 }
@@ -77,18 +79,21 @@ int		main(int ac, char **av)
 	if (ac == 1)
 		return (EXIT_SUCCESS);
 	if (!(ast = ft_check_arg(&av[1])) ||
-			!(bst = ft_init_bstack(ast->array_size)))
+		!(bst = ft_init_bstack(ast->array_size)))
 	{
-		ft_putendl_fd(ERROR_MESSAGE, STDERR_FILENO);
+		display_error();
 		return (EXIT_FAILURE);
 	}
 	ft_read_operation(ast, bst);
+	(g_color == TRUE) ? ft_putstr_fd(BOLDGREEN, STDOUT_FILENO) : 0;
 	if (!bst->array_size && is_sorted(ast->array, ast->array_size, FALSE))
 		ft_putendl_fd("OK", STDOUT_FILENO);
 	else
 	{
+		(g_color == TRUE) ? ft_putstr_fd(BOLDRED, STDOUT_FILENO) : 0;
 		ft_putendl_fd("KO", STDOUT_FILENO);
 	}
+	(g_color == TRUE) ? ft_putstr_fd(RESET, STDOUT_FILENO) : 0;
 	ft_clear_stack(ast);
 	ft_clear_stack(bst);
 	return (EXIT_SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:26:21 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/03 13:56:48 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/03 15:33:51 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ enum					e_operation
 };
 
 int g_debug;
+int g_color;
 
 int						ft_st_push(t_stack *fst, t_stack *sec);
 int						ft_st_revrot(t_stack *stack);
@@ -51,5 +52,6 @@ t_stack					*ft_check_arg(char **arg);
 t_stack					*ft_init_bstack(size_t size);
 void					ft_display_stack(t_stack ast, t_stack bst);
 void					display_header(t_stack ast, t_stack bst, char *str);
+void					display_error(void);
 
 #endif

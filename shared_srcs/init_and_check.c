@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:00:35 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/03 14:02:49 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/03 15:48:34 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ t_stack	*ft_init_astack(char **arg)
 		i_arg++;
 	}
 	astack->array_size = i_array;
+	if (ft_check_duplicates(*astack) == EXIT_FAILURE)
+		return (NULL);
 	return (astack);
 }
 
@@ -91,15 +93,26 @@ t_stack	*ft_check_arg(char **arg)
 {
 	t_stack	*astack;
 
-	if (!ft_strncmp(arg[0], "-v", 3))
+	if ((!ft_strncmp(arg[0], "-v", 3) && !ft_strncmp(arg[1], "-c", 3)) ||
+			(!ft_strncmp(arg[0], "-c", 3) && !ft_strncmp(arg[1], "-v", 3)) ||
+			!ft_strncmp(arg[0], "-vc", 4) || !ft_strncmp(arg[0], "-cv", 4))
 	{
 		g_debug = TRUE;
+		g_color = TRUE;
+		if (!ft_strncmp(arg[0], "-vc", 4) || !ft_strncmp(arg[0], "-cv", 4))
+			arg = &arg[1];
+		else
+			arg = &arg[2];
+	}
+	else if (!ft_strncmp(arg[0], "-v", 3) || !ft_strncmp(arg[0], "-c", 3))
+	{
+		if (!ft_strncmp(arg[0], "-v", 3))
+			g_debug = TRUE;
+		else
+			g_color = TRUE;
 		arg = &arg[1];
 	}
 	else
 		g_debug = FALSE;
-	if (!(astack = ft_init_astack(arg)) ||
-		ft_check_duplicates(*astack) == EXIT_FAILURE)
-		return (NULL);
-	return (astack);
+	return (astack = ft_init_astack(arg));
 }
