@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:04:29 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/02 13:24:56 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/03 12:33:52 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,22 @@
 
 void	ft_check_sorting_algo(t_stack *ast, t_stack *bst)
 {
-	char	*str_chunk;
+	char	*res;
+	int		special;
 
-	if (ast->array_size == 2)
+	if ((special = is_special_case(ast)))
 	{
-		ft_st_swap(ast);
-		ft_putendl_fd("sa", STDOUT_FILENO);
-		return ;
+		res = do_special_case(ast, bst, special);
+		write(STDOUT_FILENO, res, ft_strlen(res));
+		free(res);
 	}
 	else if (ast->array_size <= 10)
 		check_algo_small(ast, bst);
 	else
 	{
-		str_chunk = selection_sort_chunked(ast, bst);
-		write(STDOUT_FILENO, str_chunk, ft_strlen(str_chunk));
-		free(str_chunk);
+		res = selection_sort_chunked(ast, bst, ast->array_size / 11);
+		write(STDOUT_FILENO, res, ft_strlen(res));
+		free(res);
 	}
 }
 
@@ -43,7 +44,7 @@ int		main(int ac, char **av)
 		ft_putendl_fd(ERROR_MESSAGE, STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
-	if (!ft_issorted(ast->array, ast->array_size))
+	if (!is_sorted(ast->array, ast->array_size, FALSE))
 	{
 		ft_check_sorting_algo(ast, bst);
 	}

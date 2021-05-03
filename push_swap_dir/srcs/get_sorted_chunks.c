@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/01 16:10:35 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/02 15:31:03 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/03 13:33:42 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		*get_sorted_chunks(t_stack ast)
 	size = 1;
 	while (begin != ast.array_size)
 	{
-		while (size < ast.array_size - begin 
+		while (size < ast.array_size - begin
 			&& is_sorted_chunk(ast.array, begin, size) == TRUE)
 			size++;
 		list[i_list] = begin + size - 1;
@@ -51,8 +51,8 @@ int		*get_sorted_chunks(t_stack ast)
 
 int		is_sorted_if_rotated(t_stack ast)
 {
-	int 	*sorted_chunks;
-	int		res;
+	int	*sorted_chunks;
+	int	res;
 
 	res = 0;
 	sorted_chunks = get_sorted_chunks(ast);

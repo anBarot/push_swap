@@ -6,28 +6,11 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:00:35 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/02 13:26:14 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/03 14:02:49 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-int		ft_issorted(int *array, int size)
-{
-	int tmp;
-	int i;
-
-	i = 1;
-	tmp = array[0];
-	while (i < size)
-	{
-		if (tmp > array[i])
-			return (0);
-		tmp = array[i];
-		i++;
-	}
-	return (1);
-}
 
 int		check_and_add_arg(char *arg, t_stack *ast, int *i_array)
 {
@@ -72,21 +55,25 @@ int		ft_check_duplicates(t_stack ast)
 	return (EXIT_SUCCESS);
 }
 
-t_stack	*ft_check_arg(char **arg)
+t_stack	*ft_init_bstack(size_t size)
 {
+	t_stack *bstack;
+
+	if (!(bstack = ft_calloc(1, sizeof(t_stack))) ||
+		!(bstack->array = ft_calloc(size, sizeof(int))))
+		return (NULL);
+	bstack->array_size = 0;
+	return (bstack);
+}
+
+t_stack	*ft_init_astack(char **arg)
+{
+	t_stack	*astack;
 	int		i_arg;
 	int		i_array;
-	t_stack	*astack;
 
 	i_arg = 0;
 	i_array = 0;
-	if (!ft_strncmp(arg[0], "-v", 3))
-	{
-		debug = TRUE;
-		arg = &arg[1];
-	}
-	else 
-		debug = FALSE;
 	if (!(astack = ft_calloc(1, sizeof(t_stack))) ||
 		!(astack->array = ft_calloc(ft_count_line(arg), sizeof(int))))
 		return (NULL);
@@ -97,18 +84,22 @@ t_stack	*ft_check_arg(char **arg)
 		i_arg++;
 	}
 	astack->array_size = i_array;
-	if (ft_check_duplicates(*astack) == EXIT_FAILURE)
-		return (NULL);
 	return (astack);
 }
 
-t_stack	*ft_init_bstack(size_t size)
+t_stack	*ft_check_arg(char **arg)
 {
-	t_stack *bstack;
+	t_stack	*astack;
 
-	if (!(bstack = ft_calloc(1, sizeof(t_stack))) ||
-		!(bstack->array = ft_calloc(size, sizeof(int))))
+	if (!ft_strncmp(arg[0], "-v", 3))
+	{
+		g_debug = TRUE;
+		arg = &arg[1];
+	}
+	else
+		g_debug = FALSE;
+	if (!(astack = ft_init_astack(arg)) ||
+		ft_check_duplicates(*astack) == EXIT_FAILURE)
 		return (NULL);
-	bstack->array_size = 0;
-	return (bstack);
+	return (astack);
 }

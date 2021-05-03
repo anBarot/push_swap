@@ -6,7 +6,7 @@
 #    By: abarot <abarot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 17:58:02 by abarot            #+#    #+#              #
-#    Updated: 2021/05/02 14:59:45 by abarot           ###   ########.fr        #
+#    Updated: 2021/05/03 12:03:26 by abarot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@ NAME	=	../push_swap
 
 SRCS	=	srcs/push_swap.c \
 			srcs/get_min_max.c \
+			srcs/special_case.c \
 			srcs/check_algo_small.c \
 			srcs/simplest_sort.c \
-			srcs/selection_sort.c \
 			srcs/selection_sort_chunked.c \
 			srcs/do_action.c \
 			srcs/get_sorted_chunks.c

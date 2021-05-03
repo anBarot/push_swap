@@ -6,11 +6,22 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:37:22 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/02 14:57:03 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/03 13:58:35 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
+
+void	ft_display_checker(int count, t_stack ast, t_stack bst)
+{
+	char	*str_count;
+
+	str_count = ft_itoa(count);
+	ft_putstr_fd(str_count, STDOUT_FILENO);
+	ft_putstr_fd(" :\n", STDOUT_FILENO);
+	ft_display_stack(ast, bst);
+	free(str_count);
+}
 
 int		ft_get_operation(t_stack *astack, t_stack *bstack, char *line)
 {
@@ -40,14 +51,11 @@ void	ft_read_operation(t_stack *ast, t_stack *bst)
 	char	*line;
 	int		value;
 	int		count;
-	char	*str_count;
 
 	count = 0;
-	if (debug == TRUE)
-		ft_display_stack(*ast, *bst);
+	display_header(*ast, *bst, "Checker :\n\n");
 	while ((value = get_next_line(STDIN_FILENO, &line)))
 	{
-			
 		if (value == -1 || ft_get_operation(ast, bst, line) == EXIT_FAILURE)
 		{
 			ft_putendl_fd(ERROR_MESSAGE, STDERR_FILENO);
@@ -55,14 +63,8 @@ void	ft_read_operation(t_stack *ast, t_stack *bst)
 		}
 		free(line);
 		count++;
-		if (debug == TRUE)
-		{
-			str_count = ft_itoa(count);
-			ft_putstr_fd(str_count, STDOUT_FILENO);
-			ft_putstr_fd(" :\n", STDOUT_FILENO);
-			ft_display_stack(*ast, *bst);
-			free(str_count);
-		}
+		if (g_debug == TRUE)
+			ft_display_checker(count, *ast, *bst);
 	}
 	free(line);
 }
@@ -81,7 +83,7 @@ int		main(int ac, char **av)
 		return (EXIT_FAILURE);
 	}
 	ft_read_operation(ast, bst);
-	if (!bst->array_size && ft_issorted(ast->array, ast->array_size))
+	if (!bst->array_size && is_sorted(ast->array, ast->array_size, FALSE))
 		ft_putendl_fd("OK", STDOUT_FILENO);
 	else
 	{

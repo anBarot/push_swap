@@ -1,47 +1,9 @@
 -------------- random values : --------------
-11 4 7 8 0 10 2 9 1 6 5
+2 0
 -------------- result push_swap raw : --------------
-rra
-rra
-rra
-pb
-rra
-rra
-pb
-rra
-rra
-pb
-rra
-rra
-rra
-pb
-rra
-rra
-pb
-rra
-pb
+ra
 sa
-pb
-sa
-pb
-rra
-pb
-sa
-pa
-pa
-pa
-pa
-pa
-pa
-rrb
-rrb
-pa
-pa
-pa
-
-Patern :
-0, 3, 5, 7, 9, 10, 
-End of Patern
 -------------- number of operations : --------------
-41
+2
 -------------- result push_swap | checker : --------------
+KO
