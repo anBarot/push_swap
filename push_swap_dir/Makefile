@@ -6,7 +6,7 @@
 #    By: abarot <abarot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 17:58:02 by abarot            #+#    #+#              #
-#    Updated: 2021/05/03 12:03:26 by abarot           ###   ########.fr        #
+#    Updated: 2021/05/03 16:54:01 by abarot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRCS	=	srcs/push_swap.c \
 			srcs/do_action.c \
 			srcs/get_sorted_chunks.c
 
-SHARED_SRCS	=	../shared_srcs/init_and_check.c \
+SHARED_SRCS	=	../shared_srcs/no_input.c \
+				../shared_srcs/init_and_check.c \
 				../shared_srcs/operations.c \
 				../shared_srcs/ft_display_stack.c
 

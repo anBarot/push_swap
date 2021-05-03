@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:37:22 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/03 16:08:53 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/03 16:54:18 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int		main(int ac, char **av)
 	t_stack *ast;
 	t_stack *bst;
 
-	if (ac == 1)
+	if (no_input(av, ac) == TRUE)
 		return (EXIT_SUCCESS);
 	if (!(ast = ft_check_arg(&av[1])) ||
 		!(bst = ft_init_bstack(ast->array_size)))

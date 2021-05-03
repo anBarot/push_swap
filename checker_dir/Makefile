@@ -6,7 +6,7 @@
 #    By: abarot <abarot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 17:58:02 by abarot            #+#    #+#              #
-#    Updated: 2021/05/02 13:03:22 by abarot           ###   ########.fr        #
+#    Updated: 2021/05/03 16:53:49 by abarot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME	=	../checker
 
 SRCS	=	srcs/checker.c
 
-SHARED_SRCS	=	../shared_srcs/init_and_check.c \
+SHARED_SRCS	=	../shared_srcs/no_input.c \
+				../shared_srcs/init_and_check.c \
 				../shared_srcs/operations.c \
 				../shared_srcs/ft_display_stack.c
 

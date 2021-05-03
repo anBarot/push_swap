@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:03:46 by abarot            #+#    #+#             */
-/*   Updated: 2021/04/30 17:46:40 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/03 17:46:52 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,4 @@ int		ft_st_swap(t_stack *stack)
 	if (stack->array_size > 1)
 		ft_swap(&stack->array[0], &stack->array[1]);
 	return (SWAP_A);
-}
-
-void	ft_clear_stack(t_stack *st)
-{
-	free(st->array);
-	free(st);
 }
