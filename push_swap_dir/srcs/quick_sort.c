@@ -1,16 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   selection_sort_chunked.c                           :+:      :+:    :+:   */
+/*   quick_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:24:33 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/03 14:16:53 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/04 21:10:40 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int		*create_sorted_array(t_stack *ast)
+{
+	int		*sorted_array;
+
+	if (!(sorted_array = ft_calloc(ast->array_size + 1, sizeof(int))))
+		return (NULL);
+	ft_memcpy(sorted_array, ast->array, ast->array_size * sizeof(int));
+	ft_sort_array(sorted_array, ast->array_size);
+	return (sorted_array);
+}
+
+int	get_median(t_stack *ast, int nb)
+{
+	int		*sorted_array;
+	int		median;
+
+	sorted_array = create_sorted_array(ast);
+	median = sorted_array[ast->array_size / nb];
+	free(sorted_array);
+	return (median);
+}
 
 int		ft_get_posi(t_stack ast, int pivot, int direction)
 {
@@ -58,42 +80,25 @@ char	*posi_and_push(t_stack *ast, t_stack *bst, int pivot, char *res)
 	return (res);
 }
 
-int		*create_sorted_array(t_stack *ast)
+char	*quick_sort(t_stack *ast, t_stack *bst, int nb)
 {
-	int		*sorted_array;
-
-	if (!(sorted_array = ft_calloc(ast->array_size + 1, sizeof(int))))
-		return (NULL);
-	ft_memcpy(sorted_array, ast->array, ast->array_size * sizeof(int));
-	ft_sort_array(sorted_array, ast->array_size);
-	return (sorted_array);
-}
-
-char	*selection_sort_chunked(t_stack *ast, t_stack *bst, int chunk_len)
-{
-	int		n;
-	int		*sorted_array;
 	int		pivot_value;
 	char	*res;
 
-	display_header(*ast, *bst, "Selection sort chunked :\n\n");
-	sorted_array = create_sorted_array(ast);
-	if (!(res = ft_calloc(1, 1)) || !sorted_array)
+	display_header(*ast, *bst, "Quick sort :\n\n");
+	if (!(res = ft_calloc(1, 1)))
 		return (NULL);
-	n = 1;
-	while (ast->array_size > (n * chunk_len) &&
+	while (ast->array_size > 10 && 
 			!is_sorted(ast->array, ast->array_size, FALSE))
 	{
-		pivot_value = sorted_array[n * chunk_len];
-		while (bst->array_size < (n * chunk_len) &&
+		pivot_value = get_median(ast, nb);
+		while (bst->array_size < pivot_value &&
 				!is_sorted(ast->array, ast->array_size, FALSE))
 			res = posi_and_push(ast, bst, pivot_value, res);
-		n++;
 	}
 	while (ast->array_size && !is_sorted(ast->array, ast->array_size, FALSE))
 		res = push_min(ast, bst, res);
 	while (bst->array_size)
 		res = push_max(ast, bst, res);
-	free(sorted_array);
 	return (res);
 }

@@ -6,7 +6,7 @@
 #    By: abarot <abarot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 17:58:02 by abarot            #+#    #+#              #
-#    Updated: 2021/05/03 16:54:01 by abarot           ###   ########.fr        #
+#    Updated: 2021/05/04 21:02:14 by abarot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS	=	srcs/push_swap.c \
 			srcs/special_case.c \
 			srcs/check_algo_small.c \
 			srcs/simplest_sort.c \
-			srcs/selection_sort_chunked.c \
+			srcs/quick_sort.c \
 			srcs/do_action.c \
 			srcs/get_sorted_chunks.c
 

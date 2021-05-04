@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:28:32 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/03 15:07:30 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/04 20:42:54 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ char					*simplest_sort_algo_2(t_stack *ast, t_stack *bst);
 char					*selection_sort(t_stack *ast, t_stack *bst);
 char					*selection_sort_chunked(t_stack *ast, t_stack *bst,
 						int chunk_len);
+char					*posi_and_push(t_stack *ast, t_stack *bst,
+						int pivot, char *res);
+char					*quick_sort(t_stack *ast, t_stack *bst, int nb);
+int						*create_sorted_array(t_stack *ast);
 int						*get_sorted_chunks(t_stack ast);
 int						is_sorted_if_rotated(t_stack ast);
 int						ft_search_in_stack(t_stack ast, int nb);

@@ -6,7 +6,7 @@
 /*   By: abarot <abarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/21 18:04:29 by abarot            #+#    #+#             */
-/*   Updated: 2021/05/03 16:53:10 by abarot           ###   ########.fr       */
+/*   Updated: 2021/05/04 20:58:18 by abarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,18 @@ void	ft_check_sorting_algo(t_stack *ast, t_stack *bst)
 	char	*res;
 	int		special;
 
-	if ((special = is_special_case(ast)))
+	if ((special = is_special_case(ast)) && ast->array_size != 3)
 		res = do_special_case(ast, bst, special);
 	else if (ast->array_size <= 10)
 		res = check_algo_small(ast, bst);
+	else if (ast->array_size < 25)
+		res = quick_sort(ast, bst, 2);
+	else if (ast->array_size < 200)
+		res = quick_sort(ast, bst, 4);
+	else if (ast->array_size < 300)
+		res = quick_sort(ast, bst, 5);
 	else
-		res = selection_sort_chunked(ast, bst, ast->array_size / 11);
+		res = quick_sort(ast, bst, 7);
 	display_result(res);
 }
 

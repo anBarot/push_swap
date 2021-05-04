@@ -6,7 +6,7 @@
 #    By: abarot <abarot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/20 17:58:02 by abarot            #+#    #+#              #
-#    Updated: 2021/05/03 17:47:05 by abarot           ###   ########.fr        #
+#    Updated: 2021/05/04 20:33:34 by abarot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ LIB_DIR		=	libft
 all		:	
 			make -C $(PROG_ONE_DIR)
 			make -C $(PROG_TWO_DIR)
+			# mkdir -m777 ./test_dir/results
 
 checker	:	
 			make -C $(PROG_ONE_DIR)
